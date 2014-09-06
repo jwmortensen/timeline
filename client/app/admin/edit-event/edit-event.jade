@@ -1,2 +1,35 @@
-.col-md-12
-    | This is the edit-event view.
+div(ng-include='"components/navbar/navbar.html"')
+.container
+  .row
+    .col-md-4
+      h2 Edit Event
+      form(name='addEvent')
+        .form-group
+          label Select an event to edit:
+          select.form-control(ng-model='selectEvent' ng-options='d.id as d.headline for d in dates')
+        .form-group
+          label Start Date (YYYY,MM,DD)
+          input.form-control(type='text' name='startDate')
+        .form-group
+          label End Date (YYYY,MM,DD)
+          input.form-control(type='text' name='endDate')
+        .form-group
+          label Headline
+          input.form-control(type='text' name='headline')
+        .form-group
+          label Text 
+          input.form-control(type='text' name='text')
+        .form-group
+          label Tag (optional)
+          input.form-control(type='text' name='tag')
+        .form-group
+          label Classname (optional)
+          input.form-control(type='text' name='classname')
+        .form-group
+          label Photo
+          input(type='file' name='photo')
+        .form-group
+          label Caption
+          input.form-control(type='text' name='caption')
+        button.btn.btn-default(type='submit') Save Edits
+    .col-md-4

@@ -2,10 +2,13 @@
 
 angular.module('timelineApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
-    $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    }];
+/*    $scope.menu = [{
+      'title': 'Timeline',
+      'link': '/timeline'
+    }, {
+      'title': 'Map',
+      'link': '/map'
+    }];*/
     $scope.adminTools = [{
       'title': 'Add Event',
       'state': 'add-event'
