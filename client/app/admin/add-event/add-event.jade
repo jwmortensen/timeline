@@ -3,29 +3,30 @@ div(ng-include='"components/navbar/navbar.html"')
   .row
     .col-md-4
       h2 Add Event
-      form(name='addEvent')
+      form(name='addEventForm' ng-submit='addEvent(addEventForm)')
         .form-group
           label Start Date (YYYY,MM,DD)
-          input.form-control(type='text' name='startDate')
+          input.form-control(type='text' name='startDate' ng-model='timelineEvent.startDate')
         .form-group
           label End Date (YYYY,MM,DD)
-          input.form-control(type='text' name='endDate')
+          input.form-control(type='text' name='endDate' ng-model='timelineEvent.endDate')
         .form-group
           label Headline
-          input.form-control(type='text' name='headline')
+          input.form-control(type='text' name='headline' ng-model='timelineEvent.headline')
         .form-group
           label Text 
-          input.form-control(type='text' name='text')
+          input.form-control(type='text' name='text' ng-model='timelineEvent.text')
         .form-group
           label Tag (optional)
-          input.form-control(type='text' name='tag')
+          input.form-control(type='text' name='tag' ng-model='timelineEvent.tag')
         .form-group
           label Classname (optional)
-          input.form-control(type='text' name='classname')
+          input.form-control(type='text' name='classname' ng-model='timelineEvent.classname')
         .form-group
           label Photo
-          input(type='file' name='photo')
+          input(type='file' name='photo' ng-model='timelineEvent.photo')
         .form-group
           label Caption
-          input.form-control(type='text' name='caption')
+          input.form-control(type='text' name='caption' ng-model='timelineEvent.caption')
         button.btn.btn-default(type='submit') Add
+  .row(style='height: 60px;')

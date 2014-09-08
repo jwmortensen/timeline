@@ -70,6 +70,15 @@ function setTokenCookie(req, res) {
   res.redirect('/');
 }
 
+/**
+ * Returns AWS file authentication information
+ */
+function awsPermissions(req, res) {
+  var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
+  var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
+  var S3_BUCKET = process.env.S3_BUCKET;
+}
+
 exports.isAuthenticated = isAuthenticated;
 exports.hasRole = hasRole;
 exports.signToken = signToken;

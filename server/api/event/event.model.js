@@ -4,8 +4,18 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var EventSchema = new Schema({
-  name: String,
-  info: String,
+  startDate: String,
+  endDate: String,
+  headline: String,
+  text: String,
+  tag: String,
+  classname: String,
+  asset: {
+    media: String,
+    thumbnail: String,
+    credit: String,
+    caption: String
+  },
   active: Boolean
 });
 

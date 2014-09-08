@@ -22,6 +22,7 @@ exports.show = function(req, res) {
 
 // Creates a new event in the DB.
 exports.create = function(req, res) {
+  console.log(req.body);
   Event.create(req.body, function(err, event) {
     if(err) { return handleError(res, err); }
     return res.json(201, event);
