@@ -13,4 +13,7 @@ angular.module('timelineApp')
           });
       }
     };
+    $scope.check = function() {
+      console.log($scope.timelineEvent);
+    }
   });

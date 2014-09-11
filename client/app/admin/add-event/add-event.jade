@@ -24,9 +24,12 @@ div(ng-include='"components/navbar/navbar.html"')
           input.form-control(type='text' name='classname' ng-model='timelineEvent.classname')
         .form-group
           label Photo
-          input(type='file' name='photo' ng-model='timelineEvent.photo')
+          input(type='file' name='photo' ng-model='timelineEvent.photo' 
+            s3-upload bucket="jsm-timeline"
+            s3-upload-options="{getOptionsUri: '/api/aws/'}")
         .form-group
           label Caption
           input.form-control(type='text' name='caption' ng-model='timelineEvent.caption')
         button.btn.btn-default(type='submit') Add
+        button.btn.btn-danger(ng-click="check()") Check
   .row(style='height: 60px;')
