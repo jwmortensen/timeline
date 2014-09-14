@@ -3,33 +3,44 @@ div(ng-include='"components/navbar/navbar.html"')
   .row
     .col-md-4
       h2 Add Event
-      form(name='addEventForm' ng-submit='addEvent(addEventForm)')
+      form(name='addEventForm' ng-submit='addEvent(addEventForm)' novalidate)
         .form-group
           label Start Date (YYYY,MM,DD)
-          input.form-control(type='text' name='startDate' ng-model='timelineEvent.startDate')
+          .input-group
+            input.form-control(type='text' name='startDate' ng-model='timelineEvent.startDate' 
+              datepicker-popup='dd-MMMM-yyyy' is-open='startOpened' ng-required='true')
+            span.input-group-btn
+              button.btn.btn-default(type="button" ng-click="startOpen($event)")
+                i.glyphicon.glyphicon-calendar
         .form-group
           label End Date (YYYY,MM,DD)
-          input.form-control(type='text' name='endDate' ng-model='timelineEvent.endDate')
+          .input-group
+            input.form-control(type='text' name='endDate' ng-model='timelineEvent.endDate' 
+              datepicker-popup='dd-MMMM-yyyy' is-open="endOpened" ng-required='true')
+            span.input-group-btn
+              button.btn.btn-default(type="button" class="btn btn-default" ng-click="endOpen($event)")
+                i.glyphicon.glyphicon-calendar
         .form-group
           label Headline
-          input.form-control(type='text' name='headline' ng-model='timelineEvent.headline')
+          input.form-control(type='text' name='headline' ng-model='timelineEvent.headline' ng-required='true')
         .form-group
           label Text 
           input.form-control(type='text' name='text' ng-model='timelineEvent.text')
-        .form-group
-          label Tag (optional)
-          input.form-control(type='text' name='tag' ng-model='timelineEvent.tag')
         .form-group
           label Classname (optional)
           input.form-control(type='text' name='classname' ng-model='timelineEvent.classname')
         .form-group
           label Photo
-          input(type='file' name='photo' ng-model='timelineEvent.photo' 
+          div(ng-model='timelineEvent.asset.media' 
             s3-upload bucket="jsm-timeline"
             s3-upload-options="{getOptionsUri: '/api/aws/'}")
         .form-group
           label Caption
-          input.form-control(type='text' name='caption' ng-model='timelineEvent.caption')
-        button.btn.btn-default(type='submit') Add
+          input.form-control(type='text' name='caption' ng-model='timelineEvent.asset.caption')
+        .form-group
+          label Active
+          div
+            toggle-switch(ng-model="timelineEvent.active" on-label="Yes" off-label="No")
+        button.btn.btn-default.btn-lg(type='submit') Add
         button.btn.btn-danger(ng-click="check()") Check
   .row(style='height: 60px;')

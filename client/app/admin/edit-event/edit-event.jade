@@ -3,33 +3,52 @@ div(ng-include='"components/navbar/navbar.html"')
   .row
     .col-md-4
       h2 Edit Event
-      form(name='addEvent')
+      form(name='updateEventForm' ng-submit='updateEvent(updateEventForm)' novalidate)
         .form-group
           label Select an event to edit:
-          select.form-control(ng-model='selectEvent' ng-options='d.id as d.headline for d in dates')
+          select.form-control(ng-model='selectEvent' ng-options='d._id as d.headline for d in dates'
+            ng-change='getTimelineEvent()')
+            option(value='' selected) -- Please Select an Event --
         .form-group
           label Start Date (YYYY,MM,DD)
-          input.form-control(type='text' name='startDate')
+          .input-group
+            input.form-control(type='text' name='startDate' ng-model='timelineEvent.startDate' 
+              datepicker-popup='dd-MMMM-yyyy' is-open='startOpened' ng-required='true')
+            span.input-group-btn
+              button.btn.btn-default(type="button" ng-click="startOpen($event)")
+                i.glyphicon.glyphicon-calendar
         .form-group
           label End Date (YYYY,MM,DD)
-          input.form-control(type='text' name='endDate')
+          .input-group
+            input.form-control(type='text' name='endDate' ng-model='timelineEvent.endDate' 
+              datepicker-popup='dd-MMMM-yyyy' is-open="endOpened" ng-required='true')
+            span.input-group-btn
+              button.btn.btn-default(type="button" class="btn btn-default" ng-click="endOpen($event)")
+                i.glyphicon.glyphicon-calendar
         .form-group
           label Headline
-          input.form-control(type='text' name='headline')
+          input.form-control(type='text' name='headline' ng-model='timelineEvent.headline')
         .form-group
           label Text 
-          input.form-control(type='text' name='text')
-        .form-group
-          label Tag (optional)
-          input.form-control(type='text' name='tag')
+          input.form-control(type='text' name='text' ng-model='timelineEvent.text')
         .form-group
           label Classname (optional)
-          input.form-control(type='text' name='classname')
+          input.form-control(type='text' name='classname' ng-model='timelineEvent.classname')
         .form-group
           label Photo
-          input(type='file' name='photo')
+          div(ng-model='timelineEvent.asset.media' 
+            s3-upload bucket="jsm-timeline"
+            s3-upload-options="{getOptionsUri: '/api/aws/'}")
+        div(ng-if="timelineEvent.asset.media")
+          label Current Photo
+          img(ng-src='{{timelineEvent.asset.media}}' style='width: 100%;')
         .form-group
           label Caption
-          input.form-control(type='text' name='caption')
+          input.form-control(type='text' name='caption' ng-model='timelineEvent.asset.caption')
+        .form-group
+          label Active
+          div
+            toggle-switch(ng-model="timelineEvent.active" on-label="Yes" off-label="No")
         button.btn.btn-default(type='submit') Save Edits
+        button.btn.btn-danger(ng-click="check()") Check
     .col-md-4

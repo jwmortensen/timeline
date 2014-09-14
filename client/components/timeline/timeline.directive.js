@@ -13,6 +13,7 @@ angular.module('timelineApp')
         script.onload = function() {
           console.log(scope.timeline);
           createStoryJS({
+            type: 'timeline',
             width: '100%',
             height: '600',
             source: scope.timeline,

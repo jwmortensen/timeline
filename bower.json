@@ -15,14 +15,15 @@
     "font-awesome": ">=4.1.0",
     "lodash": "~2.4.1",
     "angular-ui-router": "~0.2.10",
-    "ng-s3upload": "~0.0.4"
+    "ng-s3upload": "~0.0.4",
+    "angular-toggle-switch": "~0.3.2"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",
     "angular-scenario": ">=1.2.*"
   },
   "resolutions": {
-    "angular": "1.2.21",
+    "angular": ">=1.2.*",
     "angular-sanitize": ">=1.2.*"
   }
 }

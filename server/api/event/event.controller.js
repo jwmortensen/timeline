@@ -5,6 +5,7 @@ var Event = require('./event.model');
 
 // Get list of events
 exports.index = function(req, res) {
+  console.log('in index');
   Event.find(function (err, events) {
     if(err) { return handleError(res, err); }
     return res.json(200, events);
@@ -13,9 +14,10 @@ exports.index = function(req, res) {
 
 // Get a single event
 exports.show = function(req, res) {
-  Event.findById(req.params.id, function (err, event) {
+  Event.findOne({_id: req.params.id}, function (err, event) {
     if(err) { return handleError(res, err); }
     if(!event) { return res.send(404); }
+    console.log(event);
     return res.json(event);
   });
 };
@@ -52,6 +54,22 @@ exports.destroy = function(req, res) {
       if(err) { return handleError(res, err); }
       return res.send(204);
     });
+  });
+};
+
+exports.timelineData = function(req, res) {
+  Event.find(function (err, events) {
+    if (err) { return handleError(res, err); }
+    var timelineData = {
+      'timeline': 
+      {
+        'headline': 'Jane Sequoia Mortensen',
+        'type': 'default',
+        'text': 'Test',
+        'date': events
+      }
+    };
+    return res.json(200, timelineData);
   });
 };
 

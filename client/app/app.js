@@ -6,7 +6,8 @@ angular.module('timelineApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'ngS3upload'
+  'ngS3upload',
+  'toggle-switch'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
