@@ -1,4 +1,36 @@
 div(ng-include='"components/navbar/navbar.html"')
 
-.col-md-12
-    | This is the delete-event view.
+.container.with-nav
+  .row
+    .col-md-4
+      h2 Delete Event
+      form(name='updateEventForm' ng-submit='updateEvent(updateEventForm)' novalidate)
+        .form-group
+          label Select an event to edit:
+          select.form-control(ng-model='selectEvent' ng-options='d._id as d.headline for d in dates'
+            ng-change='getTimelineEvent()')
+            option(value='' selected) -- Please Select an Event --
+        .form-group(ng-if='timelineEvent.startDate')
+          label Start Date (YYYY,MM,DD)
+          p {{ timelineEvent.startDate }}
+        .form-group(ng-if='timelineEvent.endDate')
+          label End Date (YYYY,MM,DD)
+          p {{ timelineEvent.endDate }}
+        .form-group(ng-if='timelineEvent.headline')
+          label Headline
+          p {{ timelineEvent.headline }}
+        .form-group(ng-if='timelineEvent.text')
+          label Text 
+          p {{ timelineEvent.text }}
+        .form-group(ng-if='timelineEvent.classname')
+          label Classname (optional)
+          p {{ timelineEvent.classname }}
+        .form-group(ng-if="timelineEvent.asset.media")
+          label Photo Preview
+          img(ng-src='{{timelineEvent.asset.media}}' style='width: 100%;')
+        .form-group(ng-if='timelineEvent.asset.caption')
+          label Caption
+          p {{ timelineEvent.asset.caption }}
+        button.btn.btn-danger.btn-lg(ng-if='!timelineEvent' disabled='disabled') DELETE
+        button.btn.btn-danger.btn-lg(ng-if='timelineEvent' ng-click='deleteEvent()') DELETE
+  .row(style="height: 60px;")

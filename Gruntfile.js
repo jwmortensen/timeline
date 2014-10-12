@@ -15,7 +15,8 @@ module.exports = function (grunt) {
     ngtemplates: 'grunt-angular-templates',
     cdnify: 'grunt-google-cdn',
     protractor: 'grunt-protractor-runner',
-    injector: 'grunt-asset-injector'
+    injector: 'grunt-asset-injector',
+    buildcontrol: 'grunt-build-control'
   });
 
   // Time how long tasks take. Can help when optimizing build times
@@ -23,7 +24,22 @@ module.exports = function (grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
-
+    
+    buildcontrol: {
+      openshift: {
+    //    options: {
+          remote: 'ssh://543ad33e4382ec69d7000594@timeline-jwmortensen.rhcloud.com/~/git/timeline.git/',
+          branch: 'master',
+    //      tag: pkg.version
+    //    }
+      },
+      options: {
+        dir: 'dist',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+    },
     // Project settings
     yeoman: {
       // configurable paths

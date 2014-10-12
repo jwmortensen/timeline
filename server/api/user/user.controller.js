@@ -90,7 +90,6 @@ exports.approveUser = function(req, res) {
     user.approved = !user.approved;
     user.save(function(err, result, numAffected) {
       if (err) return validationError(res, err);
-      console.log(result);
       res.send(200);
     });
   });

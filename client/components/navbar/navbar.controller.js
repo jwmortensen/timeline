@@ -30,6 +30,9 @@ angular.module('timelineApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
+    $scope.closeAlert = function(index) {
+      $scope.alerts.splice(index, 1);
+    };
 
     $scope.logout = function() {
       Auth.logout();

@@ -11,7 +11,6 @@ angular.module('timelineApp')
         var head = document.getElementsByTagName('head')[0];
         head.appendChild(script);
         script.onload = function() {
-          console.log(scope.timeline);
           createStoryJS({
             type: 'timeline',
             width: '100%',

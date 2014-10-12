@@ -11,7 +11,6 @@ module.exports = function(app) {
   // Insert routes below
   app.use('/api/timeline-events', require('./api/timeline-event'));
   app.use('/api/aws/', require('./api/aws'));
-  app.use('/api/events', require('./api/event'));
   app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
 

@@ -32,7 +32,15 @@ angular.module('timelineApp')
 
     $scope.updateEvent = function(form) {
       if (form.$valid) {
-        TimelineEvent.update($scope.timelineEvent);
+        TimelineEvent.update($scope.timelineEvent, function(success) {
+          // console.log(success);
+          $scope.alerts.push({type: 'success', msg: 'Event successfully updated.'});
+          $scope.timelineEvent = {};
+        }, 
+        function (err) {
+          console.log(err);
+          $scope.alerts.push({type: 'danger', msg: err});
+        });
       }
     }
   });

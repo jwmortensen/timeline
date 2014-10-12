@@ -4,7 +4,6 @@ angular.module('timelineApp')
   .controller('ManageUsersCtrl', function ($scope, $http, Auth, User) {
 
     $http.get('/api/users').success(function(users) {
-      console.log(users);
       $scope.users = users;
     });
 
@@ -19,7 +18,6 @@ angular.module('timelineApp')
 
     $scope.approvedToggle = function(user) {
       user.approved = !user.approved;
-      console.log(user._id);
       User.approve({ id: user._id }, {});
 
     }

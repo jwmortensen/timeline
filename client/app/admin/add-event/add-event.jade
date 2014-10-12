@@ -1,5 +1,5 @@
 div(ng-include='"components/navbar/navbar.html"')
-.container
+.container.with-nav
   .row
     .col-md-4
       h2 Add Event
@@ -34,6 +34,9 @@ div(ng-include='"components/navbar/navbar.html"')
           div(ng-model='timelineEvent.asset.media' 
             s3-upload bucket="jsm-timeline"
             s3-upload-options="{getOptionsUri: '/api/aws/'}")
+        .form-group(ng-if="timelineEvent.asset.media")
+          label Photo Preview
+          img(ng-src='{{timelineEvent.asset.media}}' style='width: 100%;')
         .form-group
           label Caption
           input.form-control(type='text' name='caption' ng-model='timelineEvent.asset.caption')
@@ -42,5 +45,6 @@ div(ng-include='"components/navbar/navbar.html"')
           div
             toggle-switch(ng-model="timelineEvent.active" on-label="Yes" off-label="No")
         button.btn.btn-default.btn-lg(type='submit') Add
-        button.btn.btn-danger(ng-click="check()") Check
+        //- button.btn.btn-danger(ng-click="check()") Check
+    .col-md-4
   .row(style='height: 60px;')

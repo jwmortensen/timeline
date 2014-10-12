@@ -7,7 +7,6 @@ var TimelineEvent = require('./timeline-event.model');
 exports.index = function(req, res) {
   console.log('timeline-events index')
   TimelineEvent.find(function (err, timelineEvents) {
-    console.log(timelineEvents);
     if(err) { return handleError(res, err); }
     return res.json(200, timelineEvents);
   });

@@ -1,4 +1,4 @@
-div.navbar.navbar-default.navbar-static-top(ng-controller='NavbarCtrl')
+div.navbar.navbar-default.navbar-fixed-top(ng-controller='NavbarCtrl')
   div.container
     div.navbar-header
       button.navbar-toggle(type='button', ng-click='isCollapsed = !isCollapsed')
@@ -29,9 +29,11 @@ div.navbar.navbar-default.navbar-static-top(ng-controller='NavbarCtrl')
         li(ng-show='isLoggedIn()')
           p.navbar-text Hello {{ getCurrentUser().name }}
 
-        li(ng-show='isLoggedIn()', ng-class='{active: isActive("/settings")}')
-          a(href='/settings')
-            span.glyphicon.glyphicon-cog
+        //- li(ng-show='isLoggedIn()', ng-class='{active: isActive("/settings")}')
+        //-   a(href='/settings')
+        //-     span.glyphicon.glyphicon-cog
 
         li(ng-show='isLoggedIn()', ng-class='{active: isActive("/logout")}')
           a(href='', ng-click='logout()') Logout
+  div(style='position: fixed; width: 33%; right: 15px; top: 65px;')
+    alert(ng-repeat='alert in alerts' type='{{alert.type}}' close='closeAlert($index)') {{ alert.msg }}

@@ -6,8 +6,8 @@ angular.module('timelineApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'ngS3upload',
-  'toggle-switch'
+  'toggle-switch',
+  'ngS3upload'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -44,6 +44,7 @@ angular.module('timelineApp', [
   })
 
   .run(function ($rootScope, $state, $location, Auth) {
+    $rootScope.alerts = [];
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
       Auth.isLoggedInAsync(function(loggedIn) {
