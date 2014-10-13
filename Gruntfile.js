@@ -28,7 +28,7 @@ module.exports = function (grunt) {
     buildcontrol: {
       openshift: {
     //    options: {
-          remote: 'ssh://543ad33e4382ec69d7000594@timeline-jwmortensen.rhcloud.com/~/git/timeline.git/',
+          remote: 'openshift',
           branch: 'master',
     //      tag: pkg.version
     //    }
