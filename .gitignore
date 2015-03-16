@@ -7,4 +7,4 @@ dist
 /server/config/local.env.js
 /server/config/environment/development.js
 /resized_images
-
+/knightlab-timeline
