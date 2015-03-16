@@ -18,5 +18,10 @@ angular.module('timelineApp')
         templateUrl: 'app/account/settings/settings.html',
         controller: 'SettingsCtrl',
         authenticate: true
+      })
+      .state('pending-approval', {
+        url: '/pending-approval',
+        templateUrl: 'app/account/pending-approval/pending-approval.html',
+        controller: 'PendingApprovalCtrl'
       });
   });

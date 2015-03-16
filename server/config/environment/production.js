@@ -19,5 +19,14 @@ module.exports = {
             process.env.MONGOHQ_URL ||
             process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
             'mongodb://localhost/timeline'
-  }
+  },
+
+  aws: {
+    key: process.env.AWS_KEY,
+    signature: process.env.AWS_SIGNATURE
+  },
+  
+  secrets: {
+    session: process.env.SECRET
+  },
 };

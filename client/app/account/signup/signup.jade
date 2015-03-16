@@ -1,9 +1,17 @@
 div(ng-include='"components/navbar/navbar.html"')
 .container.with-nav
   .row
-    .col-sm-12
+    .col-sm-12.col-md-8.col-md-offset-2
       h1 Sign up
-    .col-sm-12
+      .well
+        p
+         | We created this website as a way to share our daughter's life with those we know and love. 
+         | In order to make sure that you are actually someone that we love
+         | (or at least someone that we know) we ask that you create an account. Once we've confirmed
+         | that we know who you are, you'll get an email notification and you will be able to see all the cute baby pictures
+         | you can handle. <br><br>
+         | -Jacob & Hannah
+    .col-sm-12.col-md-8.col-md-offset-2
       form.form(name='form', ng-submit='register(form)', novalidate='')
         .form-group(ng-class='{ "has-success": form.name.$valid && submitted,\
         "has-error": form.name.$invalid && submitted }')
@@ -33,7 +41,7 @@ div(ng-include='"components/navbar/navbar.html"')
             | {{ errors.password }}
 
         div
-          button.btn.btn-inverse.btn-lg.btn-login(type='submit')
+          button.btn.btn-primary.btn-lg.btn-login(type='submit')
             | Sign up
           = ' '
           a.btn.btn-default.btn-lg.btn-register(href='/login')

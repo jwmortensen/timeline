@@ -43,7 +43,7 @@ angular.module('timelineApp', [
     };
   })
 
-  .run(function ($rootScope, $state, $location, Auth) {
+  .run(function ($rootScope, $state, $location, $cookieStore, Auth) {
     $rootScope.alerts = [];
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {

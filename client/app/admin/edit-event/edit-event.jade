@@ -30,7 +30,7 @@ div(ng-include='"components/navbar/navbar.html"')
           input.form-control(type='text' name='headline' ng-model='timelineEvent.headline')
         .form-group
           label Text 
-          input.form-control(type='text' name='text' ng-model='timelineEvent.text')
+          textarea.form-control(type='textarea' name='text' ng-model='timelineEvent.text')
         .form-group
           label Classname (optional)
           input.form-control(type='text' name='classname' ng-model='timelineEvent.classname')
@@ -50,6 +50,5 @@ div(ng-include='"components/navbar/navbar.html"')
           div
             toggle-switch(ng-model="timelineEvent.active" on-label="Yes" off-label="No")
         button.btn.btn-default(type='submit') Save Edits
-        button.btn.btn-danger(ng-click="check()") Check
   .row(style="height: 60px;")
 

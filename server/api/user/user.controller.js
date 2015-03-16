@@ -4,6 +4,7 @@ var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
+var email = require('../../components/email');
 
 var validationError = function(res, err) {
   return res.json(422, err);
@@ -90,6 +91,7 @@ exports.approveUser = function(req, res) {
     user.approved = !user.approved;
     user.save(function(err, result, numAffected) {
       if (err) return validationError(res, err);
+      if (user.approved) email.sendApproval(user.name, user.email);
       res.send(200);
     });
   });
@@ -115,3 +117,5 @@ exports.me = function(req, res, next) {
 exports.authCallback = function(req, res, next) {
   res.redirect('/');
 };
+
+

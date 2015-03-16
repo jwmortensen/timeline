@@ -1,5 +1,16 @@
 $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
 $fa-font-path: "/bower_components/font-awesome/fonts";
+$navbar-default-bg: #EF9564;
+$navbar-default-color: #FFFFFF;
+$navbar-default-link-color: #FFFFFF;
+$navbar-default-link-active-color: #FFFFFF;
+$navbar-default-link-active-bg: #F4B18C;
+$navbar-default-link-hover-color: #FFFFFF;
+$brand-primary: #4F90BD;
+$font-family-serif: "museo-slab";
+$font-family-sans-serif: "museo-sans";
+$headings-font-family: $font-family-serif;
+
 
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 @import 'font-awesome/scss/font-awesome';
@@ -8,12 +19,6 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
  * App-wide Styles
  */
 
-.browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
 
 .progress-bar-striped {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
@@ -24,15 +29,20 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
   }
 }
 
+.vco-timeline .vco-navigation .timenav-background {
+  background-color: #FFFFFF;
+}
+
+
 // Component styles are injected through grunt
 // injector
 @import 'account/login/login.scss';
+@import 'account/pending-approval/pending-approval.scss';
 @import 'admin/add-event/add-event.scss';
 @import 'admin/admin.scss';
 @import 'admin/delete-event/delete-event.scss';
 @import 'admin/edit-event/edit-event.scss';
 @import 'admin/manage-users/manage-users.scss';
-@import 'main/main.scss';
 @import 'timeline/timeline.scss';
 @import 'photo-upload/photo-upload.scss';
 // endinjector

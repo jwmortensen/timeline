@@ -6,6 +6,7 @@ angular.module('timelineApp')
       .state('edit-event', {
         url: '/edit-event',
         templateUrl: 'app/admin/edit-event/edit-event.html',
-        controller: 'EditEventCtrl'
+        controller: 'EditEventCtrl',
+        admin: true
       });
   });

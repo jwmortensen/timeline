@@ -6,6 +6,7 @@ angular.module('timelineApp')
       .state('add-event', {
         url: '/add-event',
         templateUrl: 'app/admin/add-event/add-event.html',
-        controller: 'AddEventCtrl'
+        controller: 'AddEventCtrl',
+        admin: true
       });
   });

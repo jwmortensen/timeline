@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('timelineApp')
-  .controller('EditEventCtrl', function ($scope, $http, TimelineEvent) {
+  .controller('EditEventCtrl', function ($scope, $filter, $http, TimelineEvent) {
     $http.get('/api/timeline-events/')
     .success(function(data) {
       $scope.dates = data;
@@ -32,6 +32,8 @@ angular.module('timelineApp')
 
     $scope.updateEvent = function(form) {
       if (form.$valid) {
+        $scope.timelineEvent.startDate = $filter('date')($scope.timelineEvent.startDate, 'yyyy,MM,dd');
+        $scope.timelineEvent.endDate = $filter('date')($scope.timelineEvent.endDate, 'yyyy,MM,dd');
         TimelineEvent.update($scope.timelineEvent, function(success) {
           // console.log(success);
           $scope.alerts.push({type: 'success', msg: 'Event successfully updated.'});

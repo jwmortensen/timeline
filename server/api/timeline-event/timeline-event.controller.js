@@ -63,7 +63,7 @@ exports.timelineData = function(req, res) {
       {
         'headline': 'Jane Sequoia Mortensen',
         'type': 'default',
-        'text': 'Test',
+        'text': ' ',
         'date': timelineEvents
       }
     };

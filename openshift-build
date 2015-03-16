@@ -1,0 +1,7 @@
+#!/bin/bash
+
+grunt build
+cd ./dist
+git add -A
+git commit -m "$@"
+git push openshift

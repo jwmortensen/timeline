@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('timelineApp')
-  .controller('SignupCtrl', function ($scope, Auth, $location) {
+  .controller('SignupCtrl', function ($scope, $cookieStore, Auth, $location, $modal) {
     $scope.user = {};
     $scope.errors = {};
 
@@ -16,7 +16,7 @@ angular.module('timelineApp')
         })
         .then( function() {
           // Account created, redirect to home
-          $location.path('/');
+          $location.path('/pending-approval');
         })
         .catch( function(err) {
           err = err.data;
@@ -30,5 +30,4 @@ angular.module('timelineApp')
         });
       }
     };
-
   });

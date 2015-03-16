@@ -3,6 +3,7 @@
 var _ = require('lodash');
 var Aws = require('./aws.model');
 var crypto = require('crypto');
+var config = require('../../config/environment');
 
 // Get list of awss
 exports.index = function(req, res) {
@@ -19,11 +20,11 @@ exports.index = function(req, res) {
         [ 'content-length-range', 0, 10 * 1024 * 1024 ],
       ]
     })).toString('base64');
-  var signature = crypto.createHmac('sha1', 'eg/HRQNNUR/sNr/ZXnQ2QuD6IpZzbL5AdxyDSzgt').update(policy).digest('base64');
+  var signature = crypto.createHmac('sha1', config.aws.signature).update(policy).digest('base64');
   res.json({
     policy: policy,
     signature: signature,
-    key: 'AKIAI7X5GC34E5IPWX2A'
+    key: config.aws.key
   });
 };
 

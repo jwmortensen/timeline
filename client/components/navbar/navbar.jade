@@ -6,7 +6,8 @@ div.navbar.navbar-default.navbar-fixed-top(ng-controller='NavbarCtrl')
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/') Jane Sequoia Mortensen
+      a.navbar-brand(href='/', ng-show='isLoggedIn()')
+        i.fa.fa-home.fa-lg
 
     div#navbar-main.navbar-collapse.collapse(collapse='isCollapsed')
       ul.nav.navbar-nav

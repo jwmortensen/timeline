@@ -25,7 +25,7 @@ div(ng-include='"components/navbar/navbar.html"')
           input.form-control(type='text' name='headline' ng-model='timelineEvent.headline' ng-required='true')
         .form-group
           label Text 
-          input.form-control(type='text' name='text' ng-model='timelineEvent.text')
+          textarea.form-control(type='textarea' name='text' ng-model='timelineEvent.text')
         .form-group
           label Classname (optional)
           input.form-control(type='text' name='classname' ng-model='timelineEvent.classname')

@@ -7,14 +7,14 @@ angular.module('timelineApp')
       restrict: 'E',
       link: function postLink(scope, element) {
         var script = document.createElement('script');
-        script.src = 'http://s3.amazonaws.com/cdn.knightlab.com/libs/timeline/latest/js/storyjs-embed.js';
+        script.src = '/assets/knightlab/js/storyjs-embed.js';
         var head = document.getElementsByTagName('head')[0];
         head.appendChild(script);
         script.onload = function() {
           createStoryJS({
             type: 'timeline',
             width: '100%',
-            height: '600',
+            height: '680',
             source: scope.timeline,
             font: 'NixieOne-Ledger'
           });
